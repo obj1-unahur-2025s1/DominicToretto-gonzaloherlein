@@ -1,10 +1,68 @@
 import dominic.*
 import autos.*
 
-describe "group of tests for pepita" {
+describe "group of tests for dominic" {
 
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
+  test "Dominic compra una ferrari" {
+    dominic.comprarAuto(ferrari)
+    assert.equals(1, dominic.autos().size())
   }
 
+  test "Encontrar autos que no esten en condiciones y mandarlos al taller"{
+    dominic.comprarAuto(ferrari)
+    dominic.comprarAuto(flechaRubi)
+    dominic.comprarAuto(intocable)
+    dominic.mandarAutosAlTaller()
+    assert.equals([flechaRubi],dominic.autosNoEnCondiciones())
+  }
+
+  test "Reparar todos los autos que haya en el taller"{
+    dominic.comprarAuto(ferrari)
+    dominic.comprarAuto(flechaRubi)
+    dominic.comprarAuto(intocable)
+    dominic.mandarAutosAlTaller()
+    taller.repararTodosLosAutos()
+    assert.equals(0,taller.autosAReparar().size())
+  }
+
+  test "Hacer prueba de velocidad a todos los autos de Dominic"{
+    dominic.comprarAuto(ferrari)
+    dominic.comprarAuto(flechaRubi)
+    dominic.comprarAuto(intocable)
+    dominic.comprarAuto(camaro)
+    dominic.hacerPruebaDeVelocidad()
+    assert.equals(57,ferrari.motor())
+    assert.equals(95,flechaRubi.nivelDeCombustible())
+    assert.notThat(intocable.enCondiciones())
+    assert.equals(3,camaro.cantidadDeRuedas())
+  }
+
+  test "Dominic vende todos sus vehiculos"{
+    dominic.venderAutos()
+    assert.equals(0,dominic.autos().size())
+  }
+
+  test "El promedio de velocidades maximas es de 125"{
+    dominic.comprarAuto(ferrari)
+    dominic.comprarAuto(flechaRubi)
+    dominic.comprarAuto(intocable)
+    dominic.comprarAuto(camaro)
+    assert.equals(125,dominic.promedioDeVelocidades())
+  }
+
+  test "El auto mas rapido y en condiciones es el Ferrari"{
+    dominic.comprarAuto(ferrari)
+    dominic.comprarAuto(flechaRubi)
+    dominic.comprarAuto(intocable)
+    dominic.comprarAuto(camaro)
+    assert.equals(ferrari,dominic.autoMasRapidoEnCondiciones())
+  }
+
+  test "La velocidad del ferrari es menos que del doble que el promedio de vel maximas de todos los autos"{
+    dominic.comprarAuto(ferrari)
+    dominic.comprarAuto(flechaRubi)
+    dominic.comprarAuto(intocable)
+    dominic.comprarAuto(camaro)
+    assert.notThat(dominic.hayUnAutoMuyRapido())
+  }
 }

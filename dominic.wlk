@@ -48,10 +48,14 @@ object dominic {
     method hayUnAutoMuyRapido(){
         return self.autoMasRapidoEnCondiciones().velocidadMaxima() > 2 * self.promedioDeVelocidades()
     }
+
+    method autos() = autos
 }
 
 object taller {
     const autosAReparar = []
+
+    method autosAReparar() = autosAReparar
 
     method recibirAutos(listaDeAutos){
         autosAReparar.addAll(listaDeAutos)

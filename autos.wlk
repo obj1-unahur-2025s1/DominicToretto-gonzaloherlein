@@ -1,6 +1,8 @@
 object ferrari {
     var motor = 87
 
+    method motor() = motor
+
     method enCondiciones(){
         return motor >= 65
     }
@@ -26,7 +28,11 @@ object flechaRubi {
     var nivelDeCombustible = 100
     var property tipoDeCombustible = gasolina // property genera metodos getter y setter
     var color = azul
+
+    method color() = color
     
+    method nivelDeCombustible() = nivelDeCombustible
+
     method enCondiciones(){
         return nivelDeCombustible > tipoDeCombustible.nivelMinimo() && color == rojo
     }
@@ -82,4 +88,29 @@ object intocable {
         enCondiciones = true
     }
     method velocidadMaxima() = 45
+}
+
+object camaro {
+    var cantidadDeRuedas = 4
+    var tieneCanioDeEscape = true
+
+    method cantidadDeRuedas() = cantidadDeRuedas
+
+    method enCondiciones(){
+        return cantidadDeRuedas == 4 && tieneCanioDeEscape
+    }
+
+    method hacerPrueba(){
+        cantidadDeRuedas -= 1
+        tieneCanioDeEscape = false
+    }
+
+    method reparar(){
+        cantidadDeRuedas = 4
+        tieneCanioDeEscape = true
+    }
+
+    method velocidadMaxima(){
+        return 30 * cantidadDeRuedas
+    }
 }
