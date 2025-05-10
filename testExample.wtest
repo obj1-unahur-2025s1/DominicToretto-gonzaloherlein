@@ -1,4 +1,5 @@
-import example.pepita
+import dominic.*
+import autos.*
 
 describe "group of tests for pepita" {
 
